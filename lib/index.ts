@@ -27,11 +27,8 @@ async function convertStream(
 	filename: string,
 	outputStream: stream.Writable
 ) {
-	const C_HEADER = `#pragma once\n\n`;
 	const FILE_PREFIX = `const char FILE_${filename}[] PROGMEM = R"=====(`;
 	const FILE_POSTFIX = `)=====";\n`;
-
-	outputStream.write(C_HEADER);
 
 	outputStream.write(FILE_PREFIX);
 
@@ -46,11 +43,13 @@ export async function generateHeaderFile(
 	jsFiles: string[],
 	headerFilename?: string
 ) {
+	const C_HEADER = `#pragma once\n\n`;
 	if (headerFilename.length == 0) {
 		headerFilename = 'index.h';
 	}
 
 	const outputStream = fs.createWriteStream(headerFilename);
+	outputStream.write(C_HEADER);
 
 	const namedStreams: NamedStream[] = jsFiles.map((filename) => {
 		return {

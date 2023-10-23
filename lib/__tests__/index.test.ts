@@ -35,7 +35,7 @@ test('stream is converted to progmem c code', async () => {
 
 	await finished(mockedOutputStream);
 	expect(streamData).toContain(
-		'#pragma once\n\nconst char FILE_TEST_JS[] PROGMEM = R"=====(console.log(\'hello world\');\n)=====";\n'
+		'const char FILE_TEST_JS[] PROGMEM = R"=====(console.log(\'hello world\');\n)=====";\n'
 	);
 });
 
