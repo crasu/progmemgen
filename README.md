@@ -1,4 +1,4 @@
-# Readme for Header File Generation Utility
+# Header File Generation Utility
 
 This TypeScript module provides a utility for generating C header files from web resources (ts, js, ...), primarily designed for use with microcontroller programming. The generated header files store the contents of input files as constant character arrays, making it easy to include data files in your C projects.
 
