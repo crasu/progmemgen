@@ -8,7 +8,7 @@ This TypeScript module provides a utility for generating C header files from web
 
 Before using this utility, ensure you have the following installed:
 
--   Node.js (at least version 14 or higher)
+-   Node.js (at least version 16 or higher)
 -   npm (Node Package Manager)
 
 ### Run it
