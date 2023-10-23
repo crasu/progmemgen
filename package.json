@@ -8,11 +8,11 @@
 		"progmemgen": "dist/bin/generate.js"
 	},
 	"scripts": {
-		"prepublish": "npm test; npm run build",
+		"prepublish": "eslint . ; prettier . --check ; npm test ; npm run build",
 		"build": "tsc",
 		"test": "jest",
 		"watch": "jest --watch",
-		"lint": "eslint . --fix --max-warnings=0 && prettier . --write"
+		"lint": "eslint . --fix --max-warnings=0 ; prettier . --write"
 	},
 	"keywords": [],
 	"author": "",
