@@ -5,7 +5,6 @@ import {
 	generateHeaderFile,
 	NamedStream,
 } from '../../lib/';
-import mock from 'mock-fs';
 import * as fs from 'fs';
 import * as util from 'util';
 import * as stream from 'stream';
@@ -45,22 +44,10 @@ test('Filenames are converted to proper varnames', () => {
 	expect(_convertFileToVarname(' .ts')).toBe('__TS');
 });
 
-describe('With a mocked fs', () => {
-	beforeEach(() => {
-		mock({
-			'/www-data': {
-				'test.html': '<p>test</p>',
-			},
-			output: {},
-		});
-	});
-
-	afterEach(() => {
-		mock.restore();
-	});
-
+describe('With a fs', () => {
 	test('Html files are converted to header files', () => {
-		return generateHeaderFile(['/www-data/test.html'], 'test.h').then(
+        fs.unlinkSync('test.h');
+		return generateHeaderFile(['test.html'], 'test.h').then(
 			() => {
 				const contens = fs.readFileSync('test.h', {
 					encoding: 'utf8',
